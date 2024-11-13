@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app_bloc/core/configs/theme/app_theme.dart';
+import 'package:movie_app_bloc/presentation/service_locator.dart';
 import 'package:movie_app_bloc/presentation/splash/bloc/splash_cubit.dart';
 import 'package:movie_app_bloc/presentation/splash/pages/splash.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   runApp(const MyApp());
 }
 
