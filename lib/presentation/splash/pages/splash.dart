@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app_bloc/common/helper/navigation/app_navigation.dart';
 import 'package:movie_app_bloc/core/configs/assets/app_images.dart';
+import 'package:movie_app_bloc/presentation/auth/pages/signin.dart';
+import 'package:movie_app_bloc/presentation/home/pages/home.dart';
 import 'package:movie_app_bloc/presentation/splash/bloc/splash_cubit.dart';
 import 'package:movie_app_bloc/presentation/splash/bloc/splash_state.dart';
 
@@ -12,9 +15,13 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
-          if (state is UnAuthenticated) {}
+          if (state is UnAuthenticated) {
+            AppNavigation.pushReplacement(context, const SigninPage());
+          }
 
-          if (state is Authenticated) {}
+          if (state is Authenticated) {
+            AppNavigation.pushReplacement(context, const HomePage());
+          }
         },
         child: Stack(
           children: [
